@@ -1,0 +1,28 @@
+<script src="http://code.angularjs.org/snapshot/angular.js">
+</script>
+
+<script>
+  angular
+    .module('insideApp',[])
+    .run(function(){
+      console.log('this is iFrame: ', window.test);
+    })
+    .directive('testDirective', [function () {
+      return {
+        restrict: 'E',
+        template: '<div>oppa</div>',
+        link: function (scope, iElement, iAttrs) {
+          console.log('directive compiled');
+        }
+      };
+    }]);
+
+  angular
+    .element(document)
+    .ready(function() {
+      angular.bootstrap(document, ['insideApp']);
+      console.log('test2');
+    });
+
+</script>
+<test-directive></test-directive>
